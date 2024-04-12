@@ -12,4 +12,19 @@ Autenticacion para h2 console:
 
 La aplicacion está configurada para que al iniciarse se lean las entidades y se creen las tablas correspondientes en la base de datos. 
 
+Para probar la solucion mediante postman:
+POST localhost:8080/user/add
+Requestbody:
+{
+    "name": "Stephanie",
+    "email": "steph@utlook.com",
+    "password": "abcdefg",
+    "phones": [
+        {
+        "number": "910831427",
+        "citycode": "01",
+        "countrycode": "51"
+        }
+    ]
+}
 
