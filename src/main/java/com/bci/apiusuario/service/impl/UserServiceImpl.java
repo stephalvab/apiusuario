@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -27,12 +28,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto saveUser(UserDto userDto) {
-        log.info("saveUser");
+        log.info("inicio saveUser");
         if (userRepository.existsByEmail(userDto.getEmail())) {
             throw new IllegalArgumentException("El correo ya está registrado");
         }
         return this.builderUserResponse(
                 userRepository.save(this.builderUserBd(userDto)));
+    }
+
+    @Override
+    public List<UserResponseDto> listUsers() {
+        log.info("inicio listUsers");
+        return userRepository.findAll().stream()
+                .map(this::builderUserResponse).collect(Collectors.toList());
     }
 
     private User builderUserBd(UserDto userDto) {

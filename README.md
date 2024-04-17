@@ -13,6 +13,8 @@ Autenticacion para h2 console:
 La aplicacion está configurada para que al iniciarse se lean las entidades y se creen las tablas correspondientes en la base de datos. 
 
 Para probar la solucion mediante postman:
+
+Para crear un usuario:
 POST localhost:8080/user/add
 Requestbody:
 {
@@ -28,3 +30,5 @@ Requestbody:
     ]
 }
 
+Para obtener la lista de todos los usuarios creados:
+GET localhost:8080/user/list
